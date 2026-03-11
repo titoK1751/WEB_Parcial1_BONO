@@ -12,8 +12,8 @@ export class HttpError extends Error {
     }
 }
 
-export async function fetcher<T> (endpoint: string, options?: RequestInit): Promise<T> {
-    const url = `${API_BASE_URL}${endpoint}`;
+export async function fetcher<T> (endpoint: string = "", options?: RequestInit): Promise<T> {
+    const url = endpoint ? `${API_BASE_URL}${endpoint}` : API_BASE_URL;
 
     const response = await fetch (url, {
         ... options,
@@ -40,15 +40,18 @@ export async function fetcher<T> (endpoint: string, options?: RequestInit): Prom
         return undefined as T;
     }
 
-    const contentType = response.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-        return undefined as T;
-    }
-
     const rawBody = await response.text();
     if (!rawBody) {
+        console.warn('[fetcher] Empty response body');
         return undefined as T;
     }
 
-    return JSON.parse(rawBody) as T;
+    try {
+        const parsed = JSON.parse(rawBody);
+        console.log('[fetcher] Successfully parsed JSON:', typeof parsed);
+        return parsed as T;
+    } catch (e) {
+        console.error('[fetcher] Failed to parse JSON:', e);
+        throw new HttpError(500, `Failed to parse JSON response: ${e instanceof Error ? e.message : 'Unknown error'}`);
+    }
 }
