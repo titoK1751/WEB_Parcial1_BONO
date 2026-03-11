@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Integrantes**
+
+Juan Diego Quintero Alvarez (jd.quinteroa1)
+
+Maria Ines Velasquez (mi.velasqueza1)
 
 ## Getting Started
 
