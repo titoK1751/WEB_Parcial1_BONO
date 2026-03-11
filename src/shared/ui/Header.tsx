@@ -7,10 +7,10 @@ interface Route {
 
 const Header = ({ routes }: { routes: Route[]}) => {
     return (
-        <header className="bg-red-600 text-white py-4">
+        <header className="bg-slate-400 text-white py-4">
           <div className="container mx-auto flex justify-between items-center">
             <Link href = "/" className = "flex items-center space-x-3">
-            <span className= "text-2xl font-semibold">Parcial 1 - Bono</span>
+            <span className= "text-4xl font-semibold">Parcial 1 - Bono</span>
             </Link>
             <nav>
                 {routes.map((route) => (
