@@ -24,7 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const routes = [
-    { name: "Propiedades" , path: ""}
+    { name: "Propiedades" , path: ""},
+    { name: "Mapa", path: "mapa"}
   ]
 
   return (
