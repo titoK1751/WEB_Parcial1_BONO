@@ -19,16 +19,30 @@ export type Property = {
 
 export async function getProperties(): Promise<Property[]> {
   try {
-    const result = await fetcher<Property[]>();
-    console.log('[getProperties] Result:', result);
+    console.log('[getProperties] Fetching from /api/properties...');
+    const response = await fetch('/api/properties', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status} ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log('[getProperties] Result:', result?.length);
+    
     if (!result) {
       console.warn('[getProperties] fetcher returned undefined, returning empty array');
       return [];
     }
+    
     if (!Array.isArray(result)) {
       console.warn('[getProperties] Result is not an array:', result);
       return [];
     }
+    
     return result;
   } catch (e) {
     console.error('[getProperties] Error:', e);
