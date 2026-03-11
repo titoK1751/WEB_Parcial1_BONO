@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Badge, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Card, Badge, Spinner, Button } from 'react-bootstrap';
 import { getProperties, Property } from '../services/propertyService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -100,11 +100,7 @@ export default function PropertyPage() {
                     <strong>📧 Email:</strong> <a href={`mailto:${property.email}`}>{property.email}</a>
                   </div>
                 </Card.Text>
-
-                <div className="mt-3 text-muted small">
-                  <div>Latitud: {property.latitute.toFixed(4)}</div>
-                  <div>Longitud: {property.longitude.toFixed(4)}</div>
-                </div>
+                <Button variant="secondary">Ver en Mapa</Button>
               </Card.Body>
             </Card>
           </Col>

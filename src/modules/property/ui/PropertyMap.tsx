@@ -55,7 +55,7 @@ export default function PropertyMap({
         <Marker
           key={index}
           position={[property.latitute, property.longitude]}
-        >
+        >   
           <Popup>
             <div style={{ width: '250px' }}>
               <h5 style={{ marginBottom: '8px' }}>{property.propertyName}</h5>
