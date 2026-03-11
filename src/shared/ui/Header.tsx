@@ -17,7 +17,7 @@ const Header = ({ routes }: { routes: Route[]}) => {
                     <Link
                      key = {route.path}
                      href = {route.path}
-                     className = "px-3 hover:text-gray-300"
+                     className = " text-lg font-medium px-3 hover:text-gray-300"
                     >
                       {route.name}  
                     </Link>
